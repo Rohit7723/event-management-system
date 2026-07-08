@@ -10,19 +10,19 @@ use App\Models\Participant;
 
 class EventController extends Controller
 {
+public function index(Request $request): JsonResponse
+{
+    $events = Event::withCount('participants')
+        ->with('participants:id,event_id,name,email')
+        ->where('user_id', $request->user()->id)
+        ->latest()
+        ->get();
 
-    public function index(Request $request): JsonResponse
-    {
-        $events = Event::where('user_id', $request->user()->id)
-            ->latest()
-            ->get();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Events fetched successfully.',
-            'data' => $events,
-        ]);
-    }
+    return response()->json([
+        'success' => true,
+        'data' => $events,
+    ]);
+}
 
     /**
      * Create a new event.
