@@ -1,6 +1,6 @@
 # Event Management System
 
-A RESTful Event Management System built with **Laravel 12** and **Laravel Sanctum** for user authentication. This project allows users to register, log in, create and manage events, and register participants for events.
+A RESTful Event Management System built with **Laravel 13** and **Laravel Sanctum** for user authentication. This project allows users to register, log in, create and manage events, and register participants for events.
 
 ---
 
